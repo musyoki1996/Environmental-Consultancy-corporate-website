@@ -1,0 +1,811 @@
+import { Service, Industry, Project, TeamMember, Testimonial, Article, WebsiteSettings } from '../types';
+
+export const initialSettings: WebsiteSettings = {
+  companyName: 'Senior Environmental & Engineering Ltd',
+  tagline: 'Engineering Excellence. Environmental Responsibility. Sustainable Futures.',
+  phone: '+254 726 856 602',
+  email: 'info@seniorenv.com',
+  whatsapp: '+254726856602',
+  officeAddress: 'Gateway Mall, 4th Floor, Mombasa Road, Nairobi, Kenya',
+  postalAddress: 'P.O. Box 48890-00100, Nairobi, Kenya',
+  workingHoursWeekday: 'Monday – Friday: 8:00 AM – 5:00 PM',
+  workingHoursSaturday: 'Saturday: 8:00 AM – 1:00 PM',
+  statProjectsCompleted: '3,200+',
+  statYearsExperience: '12+',
+  statSatisfiedClients: '1,814+',
+  statIsoAlignment: 'ISO 9001:2015 & ISO 14001:2015 Aligned Systems',
+};
+
+export const initialServices: Service[] = [
+  {
+    id: 'srv-1',
+    slug: 'environmental-consultancy',
+    title: 'Environmental Consultancy',
+    category: 'Environmental',
+    shortDescription: 'Comprehensive Environmental Impact Assessments (EIA), Environmental Audits (EA), and statutory permitting to safeguard compliance and sustainability.',
+    fullDescription: 'Senior Environmental & Engineering Ltd is registered as a Firm of Experts with the National Environment Management Authority (NEMA). We provide high-level environmental impact assessments, strategic environmental assessments (SEA), environmental management plans (EMP), and continuous annual environmental compliance audits across East Africa.',
+    scopeOfWork: [
+      'Environmental & Social Impact Assessments (ESIA)',
+      'Statutory Annual Environmental Audits (EA)',
+      'Environmental Management and Monitoring Plans (EMMP)',
+      'Environmental permitting, license renewals, and NEMA liaison',
+      'Decommissioning plans and site remediation strategies',
+      'Stakeholder engagement and public participation forums'
+    ],
+    technicalCapabilities: [
+      'NEMA Certified Lead Experts & Registered Environmental Practitioners',
+      'Multidisciplinary field survey teams (Ecology, Hydrology, Sociology, GIS)',
+      'Robust risk screening matrices and IFC Performance Standards alignment',
+      'Automated regulatory compliance reporting'
+    ],
+    applicableStandards: [
+      'Environmental Management and Co-ordination Act (EMCA 1999, Revised 2015)',
+      'Environmental (Impact Assessment and Audit) Regulations, 2003',
+      'World Bank / IFC Environmental and Social Performance Standards',
+      'ISO 14001:2015 Environmental Management Systems'
+    ],
+    industriesServed: ['Manufacturing', 'Energy & Infrastructure', 'Real Estate & Construction', 'Oil & Gas', 'Agriculture'],
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg',
+    featured: true
+  },
+  {
+    id: 'srv-2',
+    slug: 'air-quality-consultancy-engineering',
+    title: 'Air Quality Consultancy & Engineering',
+    category: 'Air Quality',
+    shortDescription: 'Industrial stack emissions testing, source testing, isokinetic sampling, and air pollution control engineering for industrial emitters.',
+    fullDescription: 'SEEL provides certified isokinetic stack emissions testing and source monitoring using modern calibrated instruments. We assist industrial facilities in measuring emissions of particulate matter, nitrogen oxides (NOx), sulfur dioxide (SO2), carbon monoxide (CO), and volatile organic compounds (VOCs) to guarantee statutory compliance with national and international emission limits.',
+    scopeOfWork: [
+      'Isokinetic particulate matter stack testing (USEPA Method 5)',
+      'Combustion gases analysis (O2, CO, CO2, NOx, SO2) via electrochemical/optical sensors',
+      'Stack velocity, volumetric flow rate, moisture content, and gas temperature profiling',
+      'Design and evaluation of air pollution abatement systems (baghouses, scrubbers, cyclones)',
+      'Emissions inventory preparation and compliance verification'
+    ],
+    technicalCapabilities: [
+      'USEPA and ISO compliant isokinetic sampling consoles and heated pitot probes',
+      'Real-time flue gas analyzers (Testo 350 / Horiba instrumentation)',
+      'Certified Stack Testing Engineers with over 10 years of industrial experience',
+      'On-site gravimetric filter conditioning and laboratory analytical support'
+    ],
+    applicableStandards: [
+      'EMCA Air Quality Regulations, 2014 (First & Third Schedules)',
+      'USEPA Methods 1, 2, 3, 4, 5, 6C, 7E, 10',
+      'ISO 9096 (Stationary Source Emissions)',
+      'World Health Organization (WHO) Industrial Emission Benchmarks'
+    ],
+    industriesServed: ['Cement Manufacturing', 'Steel & Metal Smelting', 'Sugar Factories', 'Thermal Power Plants', 'Refineries'],
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg',
+    featured: true
+  },
+  {
+    id: 'srv-3',
+    slug: 'ambient-air-quality-monitoring',
+    title: 'Ambient Air Quality Monitoring',
+    category: 'Air Quality',
+    shortDescription: 'Continuous and baseline monitoring of PM2.5, PM10, toxic gases, and meteorological parameters in surrounding community and industrial zones.',
+    fullDescription: 'We conduct ambient air quality surveillance to assess the impact of industrial operations, vehicular traffic, and construction sites on surrounding environments and vulnerable receptors. Using optical particle counters and high-volume air samplers, SEEL provides verified baseline data and ongoing perimeter monitoring.',
+    scopeOfWork: [
+      'Continuous ambient particulate monitoring (PM1.0, PM2.5, PM10, TSP)',
+      'Gaseous criteria pollutants measurement (NO2, SO2, O3, H2S, NH3)',
+      'Co-located automated weather station (wind speed, wind direction, humidity, solar radiation)',
+      'Baseline air quality surveys for EIA and project development',
+      'Long-term fence-line perimeter monitoring programs'
+    ],
+    technicalCapabilities: [
+      'Federal Reference Method (FRM) and Federal Equivalent Method (FEM) certified particulate monitors',
+      'Real-time laser optical particle spectrometers with cloud telemetry',
+      'Active and passive diffusive sampling techniques',
+      'Meteorological wind rose and pollution correlation modeling'
+    ],
+    applicableStandards: [
+      'Kenya EMCA (Air Quality) Regulations 2014 (Second Schedule - Ambient Standards)',
+      'WHO Global Air Quality Guidelines (2021 update)',
+      'World Bank Group Environmental, Health, and Safety (EHS) General Guidelines'
+    ],
+    industriesServed: ['Mining & Quarrying', 'Road Construction', 'Chemical Plants', 'Ports & Logistics', 'Urban Developments'],
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg',
+    featured: true
+  },
+  {
+    id: 'srv-4',
+    slug: 'indoor-air-quality-monitoring',
+    title: 'Indoor Air Quality Monitoring',
+    category: 'Occupational Health',
+    shortDescription: 'Workplace air quality evaluations, ventilation assessments, airborne dust, and bioaerosol monitoring for employee safety.',
+    fullDescription: 'Good indoor air quality is vital for occupational health, mental alertness, and regulatory compliance under DOSHS guidelines. SEEL carries out in-depth assessments of indoor environmental quality in offices, commercial buildings, cleanrooms, and factory floors.',
+    scopeOfWork: [
+      'Workplace respiratory dust and respirable silica sampling',
+      'Indoor carbon dioxide (CO2), carbon monoxide (CO), and VOC profiling',
+      'HVAC ventilation effectiveness and fresh air exchange rate calculations',
+      'Temperature, relative humidity, and thermal comfort indices (PMV / PPD)',
+      'Mold, fungal spore, and bioaerosol assessment'
+    ],
+    technicalCapabilities: [
+      'Direct-reading multi-gas photoionization detectors (PID)',
+      'Real-time indoor air quality monitors with logging capabilities',
+      'Calibrated anemometers and balometers for airflow volume verification'
+    ],
+    applicableStandards: [
+      'Occupational Safety and Health Act (OSHA 2007)',
+      'ASHRAE Standard 62.1 (Ventilation for Acceptable Indoor Air Quality)',
+      'ISO 16000 (Indoor Air)'
+    ],
+    industriesServed: ['Hospitality & Hotels', 'Commercial Offices', 'Hospitals & Healthcare', 'Pharmaceutical Cleanrooms', 'Manufacturing Facilities'],
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg',
+    featured: false
+  },
+  {
+    id: 'srv-5',
+    slug: 'acoustic-noise-vibration-monitoring',
+    title: 'Acoustic Noise & Vibration Monitoring',
+    category: 'Environmental',
+    shortDescription: 'Environmental noise surveys, occupational noise dosimetry, vibration testing, and acoustic mitigation engineering.',
+    fullDescription: 'Noise and structural vibration can cause severe health hazards, structural fatigue, and regulatory non-compliance. SEEL deploys Type 1 / Class 1 sound level meters and triaxial geophone vibration sensors to measure boundary noise, community impact, and machinery vibration.',
+    scopeOfWork: [
+      'Day and night environmental noise monitoring (Leq, Lmax, L10, L90, Lden)',
+      'Occupational personal noise dosimetry for plant workers',
+      'Construction blasting and heavy machinery ground vibration monitoring (PPV, VDV)',
+      'Acoustic sound insulation testing and noise barrier design',
+      'Noise propagation contour mapping using CadnaA and SoundPLAN algorithms'
+    ],
+    technicalCapabilities: [
+      'IEC 61672-1 Class 1 integrating sound level meters with 1/1 and 1/3 octave band analysis',
+      'Instantaneous acoustic field calibrators traceable to international standards',
+      'Triaxial seismographs and geophone vibration analyzers for DIN 4150 compliance'
+    ],
+    applicableStandards: [
+      'EMCA (Noise and Excessive Vibration Pollution) (Control) Regulations, 2009',
+      'OSHA 2007 - Noise Prevention and Control Regulations',
+      'ISO 1996 (Acoustics - Description and Measurement of Environmental Noise)',
+      'DIN 4150-3 (Structural Vibration in Buildings)'
+    ],
+    industriesServed: ['Heavy Manufacturing', 'Roads & Railways', 'Quarries & Mining', 'Entertainment & Hospitality', 'Residential Developments'],
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg',
+    featured: true
+  },
+  {
+    id: 'srv-6',
+    slug: 'industrial-hygiene',
+    title: 'Industrial Hygiene',
+    category: 'Occupational Health',
+    shortDescription: 'Comprehensive occupational hygiene evaluations, hazardous chemical exposure monitoring, asbestos testing, and ergonomics.',
+    fullDescription: 'SEEL provides professional industrial hygiene services to identify, evaluate, and control environmental stressors in the workplace. Our DOSHS-approved occupational hygienists evaluate chemical, physical, and ergonomic hazards to safeguard workforce productivity and health.',
+    scopeOfWork: [
+      'Chemical hazard exposure assessments (organic solvents, acid mists, metal fumes)',
+      'Personal air sampling with cyclone heads and sorbent tubes',
+      'Asbestos building surveys, bulk sampling, and airborne fiber counting (PCM)',
+      'Workplace lighting (lux level) and illumination surveys',
+      'Thermal stress evaluations (Wet Bulb Globe Temperature - WBGT)',
+      'Ergonomic workplace audits and musculoskeletal risk evaluations'
+    ],
+    technicalCapabilities: [
+      'Intrinsically safe personal air sampling pumps with precision flow rotameters',
+      'NIST-traceable digital photometers / lux meters',
+      'Direct-reading WBGT heat stress monitors',
+      'Certified Industrial Hygiene (CIH) methodologies'
+    ],
+    applicableStandards: [
+      'Occupational Safety and Health Act (OSHA 2007)',
+      'Factories and Other Places of Work (Hazardous Substances) Rules',
+      'ACGIH Threshold Limit Values (TLVs) and Biological Exposure Indices (BEIs)',
+      'NIOSH Manual of Analytical Methods (NMAM)'
+    ],
+    industriesServed: ['Chemical Manufacturing', 'Steel Smelting', 'Warehousing & Logistics', 'Food Processing', 'Power Generation'],
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg',
+    featured: false
+  },
+  {
+    id: 'srv-7',
+    slug: 'food-laboratory-services',
+    title: 'Food & Laboratory Services',
+    category: 'Laboratory',
+    shortDescription: 'Advanced chemical and microbiological testing of drinking water, wastewater effluents, soils, and food commodities.',
+    fullDescription: 'Our laboratory testing operations provide reliable analytical testing adhering to ISO/IEC 17025 quality management standards. From potable water and industrial effluent verification to hazardous soil contamination, we ensure precise and legally defensible data.',
+    scopeOfWork: [
+      'Drinking water quality analysis (WHO & KEBS KS EAS 12 standards)',
+      'Industrial wastewater and effluent compliance testing (BOD5, COD, TSS, heavy metals)',
+      'Soil fertility, heavy metal contamination, and pesticide residue profiling',
+      'Microbiological testing (Total Coliforms, E. coli, Salmonella, Yeast & Mold)',
+      'Toxicology and leachate testing (TCLP) for hazardous waste characterization'
+    ],
+    technicalCapabilities: [
+      'Atomic Absorption Spectroscopy (AAS) and ICP-OES for heavy metal detection',
+      'UV-Vis Spectrophotometry and Gas Chromatography (GC-MS)',
+      'Strict chain-of-custody protocols, sterile field sampling kits, and cold-chain logistics',
+      'Fast turnaround emergency analytical reporting'
+    ],
+    applicableStandards: [
+      'EMCA (Water Quality) Regulations 2006 (Third Schedule - Discharge Limits)',
+      'KEBS Drinking Water Quality Specifications (KS 05-459)',
+      'Standard Methods for the Examination of Water and Wastewater (APHA)',
+      'ISO/IEC 17025 General Requirements for Competence of Testing Laboratories'
+    ],
+    industriesServed: ['Food & Beverage', 'Hospitality', 'Water Utilities', 'Agriculture & Export Horticulture', 'Textile & Tanneries'],
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg',
+    featured: true
+  },
+  {
+    id: 'srv-8',
+    slug: 'building-construction',
+    title: 'Building & Construction',
+    category: 'Engineering',
+    shortDescription: 'Structural design, civil works, architectural coordination, construction supervision, quantity surveying, and materials quality control.',
+    fullDescription: 'SEEL provides end-to-end building and civil engineering consultancy. Our engineering professionals manage residential, commercial, and industrial construction projects from initial feasibility and structural designs to quality control, non-destructive testing, and final handover.',
+    scopeOfWork: [
+      'Architectural design and structural engineering calculations',
+      'Civil infrastructure engineering (drainage, roads, earthworks, water supply)',
+      'Construction supervision, site management, and Clerk of Works services',
+      'Quantity surveying, bill of quantities (BQ) preparation, and cost auditing',
+      'Construction materials testing (concrete cube compression, rebar tensile strength, soil compaction)',
+      'Structural integrity assessments of existing buildings and rehabilitation engineering'
+    ],
+    technicalCapabilities: [
+      'Licensed Structural Engineers (Engineers Board of Kenya - EBK)',
+      'Advanced finite-element modeling software (AutoCAD, Prokon, ETABS, Revit BIM)',
+      'Digital Schmidt rebound hammers and ultrasonic pulse velocity testers',
+      'Total station electronic distance measurement and GPS surveying'
+    ],
+    applicableStandards: [
+      'Kenya Building Code and Physical and Land Use Planning Act',
+      'Eurocodes (BS EN 1990 to 1999) & British Standards (BS 8110)',
+      'National Construction Authority (NCA) Quality Regulations',
+      'ISO 9001:2015 Quality Management Systems'
+    ],
+    industriesServed: ['Commercial Real Estate', 'Industrial Warehousing', 'Institutional & Education', 'Infrastructure Developers', 'Residential Projects'],
+    image: '/src/assets/images/service_building_construction_1793480531032.jpg',
+    featured: true
+  },
+  {
+    id: 'srv-9',
+    slug: 'industrial-energy-audit-inspection',
+    title: 'Industrial Energy Audit & Inspection',
+    category: 'Engineering',
+    shortDescription: 'Comprehensive electrical and thermal energy audits, power quality assessments, and energy conservation recommendations under EPRA guidelines.',
+    fullDescription: 'Under the Energy and Petroleum Regulatory Authority (EPRA) Energy Management Regulations, large power consumers must undertake comprehensive energy audits every three years. SEEL delivers rigorous electrical, mechanical, and thermal audits to lower operational costs and carbon emissions.',
+    scopeOfWork: [
+      'EPRA-compliant Investment Grade Energy Audits (IGEA)',
+      'Electrical power quality profiling (harmonics, power factor, voltage unbalance)',
+      'Thermal efficiency testing of boilers, steam distribution, and furnace insulation',
+      'Compressed air system leak detection and optimization',
+      'Motor, pump, and chiller efficiency evaluations',
+      'Development of ISO 5001 Energy Management Action Plans'
+    ],
+    technicalCapabilities: [
+      'EPRA Licensed Lead Energy Auditors',
+      'Three-phase power quality analyzers and data loggers',
+      'Ultrasonic compressed air leak detectors',
+      'Infrared thermographic cameras for electrical panel and insulation inspection'
+    ],
+    applicableStandards: [
+      'EPRA Energy Management Regulations 2012',
+      'ISO 50001 (Energy Management Systems)',
+      'ISO 50002 (Energy Audits - Requirements with Guidance for Use)'
+    ],
+    industriesServed: ['Heavy Manufacturing', 'Textile Mills', 'Hotels & Resorts', 'Tea & Coffee Processing', 'Cement & Steel Plants'],
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg',
+    featured: false
+  },
+  {
+    id: 'srv-10',
+    slug: 'air-dispersion-modelling',
+    title: 'Air Dispersion Modelling',
+    category: 'Air Quality',
+    shortDescription: 'Computer simulation of atmospheric pollutant dispersion using AERMOD and CALPUFF to predict ambient impacts and stack height design.',
+    fullDescription: 'SEEL utilizes regulatory atmospheric dispersion models to simulate how pollutants from industrial stacks and fugitive sources disperse into the atmosphere. This modeling is essential for EIA approvals, calculating minimum stack heights (Good Engineering Practice - GEP), and community health impact assessments.',
+    scopeOfWork: [
+      'AERMOD steady-state Gaussian plume modeling for industrial facilities',
+      'Complex terrain and building downwash simulations (BPIP)',
+      'Multi-source cumulative air quality impact assessments',
+      'Local terrain and meteorological data pre-processing (AERMET & AERMAP)',
+      'Worst-case meteorological scenario simulations and contour mapping'
+    ],
+    technicalCapabilities: [
+      'USEPA-approved AERMOD and CALPUFF modeling suites',
+      'High-resolution terrain elevation datasets (SRTM, ALOS)',
+      'Advanced GIS visualization of isopleth ground-level concentrations',
+      'Certified environmental fluid dynamics and atmospheric modelers'
+    ],
+    applicableStandards: [
+      'USEPA Guideline on Air Quality Models (Appendix W of 40 CFR Part 51)',
+      'NEMA Air Quality Regulations 2014 Modelling Protocols',
+      'World Bank / IFC Air Dispersion Standards'
+    ],
+    industriesServed: ['Power Generation', 'Chemical & Fertilizer Plants', 'Petroleum Refining', 'Smelting & Cement', 'Incineration Facilities'],
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg',
+    featured: false
+  },
+  {
+    id: 'srv-11',
+    slug: 'gis-data-management',
+    title: 'GIS & Environmental Data Management',
+    category: 'Environmental',
+    shortDescription: 'Spatial analysis, drone mapping, remote sensing, environmental sensitivity indexing, and enterprise spatial databases.',
+    fullDescription: 'Our GIS & Spatial Data Management division delivers high-precision geospatial insights for environmental baseline mapping, route alignment, land suitability analysis, and natural resource conservation. We bridge environmental science and spatial intelligence.',
+    scopeOfWork: [
+      'Environmental sensitivity mapping and land suitability assessments',
+      'High-resolution drone orthophoto generation and digital elevation models (DEM)',
+      'Spatial data collection using survey-grade GNSS/RTK instruments',
+      'Spatial multi-criteria decision analysis (SMCDA) for linear infrastructure',
+      'Enterprise GIS web-portal development and spatial database architecture'
+    ],
+    technicalCapabilities: [
+      'ArcGIS Pro, QGIS, and Google Earth Engine workflows',
+      'Photogrammetry and multispectral remote sensing pipelines',
+      'Sub-meter accuracy differential GPS / GNSS rover systems',
+      'PostGIS spatial databases and Python geospatial scripting'
+    ],
+    applicableStandards: [
+      'ISO 19115 (Geographic Information - Metadata)',
+      'Open Geospatial Consortium (OGC) Standards',
+      'Survey Act of Kenya (Cap 299)'
+    ],
+    industriesServed: ['Infrastructure & Pipelines', 'Renewable Energy (Wind & Solar)', 'Agriculture & Forestry', 'Urban Master Planning', 'Conservation Agencies'],
+    image: '/src/assets/images/service_building_construction_1793480531032.jpg',
+    featured: false
+  },
+  {
+    id: 'srv-12',
+    slug: 'geotechnical-investigation',
+    title: 'Geotechnical Investigation',
+    category: 'Engineering',
+    shortDescription: 'Subsurface soil drilling, Standard Penetration Testing (SPT), rock coring, bearing capacity calculations, and foundation engineering reports.',
+    fullDescription: 'Subsurface ground conditions dictate the structural stability and safety of civil projects. SEEL executes comprehensive geotechnical site investigations with motorized rotary core drilling rigs, dynamic cone penetrometers, and in-house soil mechanics laboratory testing.',
+    scopeOfWork: [
+      'Rotary core drilling and continuous soil sampling',
+      'Standard Penetration Testing (SPT) at 1.5m depth intervals',
+      'Dynamic Cone Penetrometer (DCP) testing for pavement and shallow foundations',
+      'Trial pit excavations and undisturbed Shelby tube sampling',
+      'Laboratory soil testing (Atterberg limits, sieve analysis, direct shear, triaxial, consolidation)',
+      'Allowable bearing capacity evaluation and foundation settlement analysis'
+    ],
+    technicalCapabilities: [
+      'Motorized hydraulic drilling rigs capable of drilling up to 50 meters depth',
+      'Calibrated split-spoon samplers and NX core barrels',
+      'Certified Geotechnical Engineers and Engineering Geologists',
+      'Detailed engineering log sheets and comprehensive foundation design reports'
+    ],
+    applicableStandards: [
+      'BS 5930 (Code of Practice for Ground Investigations)',
+      'ASTM D1586 (Standard Test Method for Standard Penetration Test - SPT)',
+      'Eurocode 7 (Geotechnical Design - BS EN 1997)',
+      'AASHTO Soil Classification Standards'
+    ],
+    industriesServed: ['High-Rise Commercial Buildings', 'Bridges & Highway Infrastructure', 'Industrial Plants & Silos', 'Dams & Reservoirs', 'Telecommunication Towers'],
+    image: '/src/assets/images/service_geotechnical_drilling_1793480530862.jpg',
+    featured: true
+  },
+  {
+    id: 'srv-13',
+    slug: 'other-engineering-services',
+    title: 'Other Engineering Services',
+    category: 'Engineering',
+    shortDescription: 'Non-Destructive Testing (NDT), structural integrity auditing, expert witness litigation support, and specialized technical appraisals.',
+    fullDescription: 'SEEL provides bespoke technical advisory and engineering inspection services. From forensic structural evaluations and ultrasonic metal thickness gauging to environmental litigation support and statutory expert witness testimony, our senior specialists provide authoritative engineering solutions.',
+    scopeOfWork: [
+      'Non-Destructive Testing (NDT) of concrete and structural steelwork',
+      'Ultrasonic thickness gauging of industrial pressure vessels and piping',
+      'Expert witness testimony and technical litigation support in environmental tribunals',
+      'Due diligence audits for industrial mergers and asset acquisitions',
+      'Project rehabilitation design and structural retrofitting consultancy'
+    ],
+    technicalCapabilities: [
+      'Registered Consulting Engineers & Court-Admitted Expert Witnesses',
+      'Calibrated ultrasonic flaw detectors and magnetic particle inspection gear',
+      'Corrosion assessment and half-cell potential testing instruments',
+      'Multi-disciplinary technical advisory board'
+    ],
+    applicableStandards: [
+      'ISO 9712 (Non-destructive testing - Qualification and certification)',
+      'Engineers Act 2011 (Kenya)',
+      'ASTM Concrete and Steel NDT Standards'
+    ],
+    industriesServed: ['Insurance & Legal Firms', 'Financial Institutions', 'Industrial Asset Managers', 'Municipal Authorities', 'Petroleum Depots'],
+    image: '/src/assets/images/service_building_construction_1793480531032.jpg',
+    featured: false
+  }
+];
+
+export const initialIndustries: Industry[] = [
+  {
+    id: 'ind-1',
+    slug: 'pharmaceutical-industries',
+    name: 'Pharmaceutical Industries',
+    challenges: 'Strict aseptic cleanroom requirements, hazardous active pharmaceutical ingredient (API) exhaust filtration, toxic solvent recovery, and stringent WHO-GMP guidelines.',
+    complianceReqs: 'NEMA Air Quality Regulations, OSHA hazardous chemical rules, Pharmacy and Poisons Board hygiene requirements, WHO-GMP cleanroom standards.',
+    engineeringReqs: 'HEPA ventilation balancing, positive/negative pressure cascades, explosion-proof exhaust systems, and certified cleanroom validation.',
+    solutions: [
+      'Continuous Indoor Air Quality and particulate verification (ISO 14644-1)',
+      'VOC and solvent emissions stack testing',
+      'Comprehensive Environmental Impact Assessments for production facility expansion',
+      'Industrial hygiene personal exposure monitoring for active ingredients'
+    ],
+    relevantServices: ['indoor-air-quality-monitoring', 'industrial-hygiene', 'air-quality-consultancy-engineering', 'environmental-consultancy'],
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg'
+  },
+  {
+    id: 'ind-2',
+    slug: 'steel-manufacturing',
+    name: 'Steel & Metal Smelting',
+    challenges: 'Heavy fugitive dust, intense furnace combustion gases (SO2, NOx, CO), severe acoustic noise levels, and heavy structural ground vibration.',
+    complianceReqs: 'Strict isokinetic stack emissions testing under NEMA schedule, DOSHS occupational noise and thermal stress audits.',
+    engineeringReqs: 'High-temperature baghouse emission controls, sound baffling around electric arc furnaces, and structural vibration isolation.',
+    solutions: [
+      'Quarterly isokinetic stack emissions testing for blast furnaces and rolling mills',
+      'Occupational noise dosimetry and vibration surveys',
+      'Industrial energy auditing for high-consumption induction furnaces',
+      'Effluent recycling and quenching water laboratory analysis'
+    ],
+    relevantServices: ['air-quality-consultancy-engineering', 'acoustic-noise-vibration-monitoring', 'industrial-energy-audit-inspection', 'ambient-air-quality-monitoring'],
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg'
+  },
+  {
+    id: 'ind-3',
+    slug: 'sugar-industries',
+    name: 'Sugar Industries & Agro-processing',
+    challenges: 'Bagasse-fired boiler emissions, fly ash dispersion, high biochemical oxygen demand (BOD) mill wastewater, and seasonal production peaks.',
+    complianceReqs: 'Water Quality Regulations 2006 effluent limits, NEMA boiler emission limits, statutory annual environmental audits.',
+    engineeringReqs: 'Wet scrubber and multi-cyclone optimization, anaerobic wastewater digesters, and thermal energy efficiency in steam cogenerators.',
+    solutions: [
+      'Bagasse boiler stack emission testing and flue gas optimization',
+      'Comprehensive wastewater effluent laboratory monitoring (BOD5, COD, TSS)',
+      'EPRA-compliant industrial energy audits to maximize cogeneration export',
+      'Air dispersion modeling for plume impact on neighboring farming communities'
+    ],
+    relevantServices: ['air-quality-consultancy-engineering', 'food-laboratory-services', 'industrial-energy-audit-inspection', 'air-dispersion-modelling'],
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg'
+  },
+  {
+    id: 'ind-4',
+    slug: 'food-beverage-processing',
+    name: 'Food & Beverage Processing',
+    challenges: 'HACCP food contact safety, organic effluent loads, trade effluent pre-treatment, refrigeration ammonia leak risks, and corporate sustainability targets.',
+    complianceReqs: 'KEBS drinking and process water standards (KS EAS 12), municipal trade waste agreements, environmental audit compliance.',
+    engineeringReqs: 'Biological wastewater treatment plants (WWTP), ammonia leak early warning detectors, and steam boiler energy recovery.',
+    solutions: [
+      'Certified microbiological and chemical water laboratory testing',
+      'Industrial wastewater effluent testing prior to public sewer discharge',
+      'Annual environmental audits and waste management optimization',
+      'Cold-chain indoor air quality and ventilation assessments'
+    ],
+    relevantServices: ['food-laboratory-services', 'environmental-consultancy', 'industrial-energy-audit-inspection', 'indoor-air-quality-monitoring'],
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg'
+  },
+  {
+    id: 'ind-5',
+    slug: 'refineries-oil-gas',
+    name: 'Refineries, Oil & Gas',
+    challenges: 'Volatile organic compound (VOC) vapor loss, hazardous flaring, soil and groundwater hydrocarbon contamination, and fire safety compliance.',
+    complianceReqs: 'NEMA Hazardous Waste Regulations, EPRA petroleum storage licensing, PIEA safety protocols, global IFC hydrocarbon standards.',
+    engineeringReqs: 'Vapor recovery units (VRU), secondary containment bund walls, oil-water separators, and cathodic pipeline protection.',
+    solutions: [
+      'Fugitive VOC leak detection and repair (LDAR) surveys using optical gas imaging',
+      'Hydrocarbon soil and groundwater testing (TPH, BTEX, PAH)',
+      'Geotechnical investigation for heavy petroleum storage tank foundations',
+      'AERMOD air dispersion modeling for flare and process stack emissions'
+    ],
+    relevantServices: ['air-dispersion-modelling', 'air-quality-consultancy-engineering', 'geotechnical-investigation', 'food-laboratory-services'],
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg'
+  },
+  {
+    id: 'ind-6',
+    slug: 'cement-manufacturing',
+    name: 'Cement Manufacturing',
+    challenges: 'Extreme particulate matter (PM) emissions from rotary kilns and clinker coolers, limestone quarry blasting vibrations, and immense electrical/thermal loads.',
+    complianceReqs: 'Continuous particulate emissions limits under NEMA, mining vibration thresholds under EMCA 2009, statutory environmental licensing.',
+    engineeringReqs: 'Electrostatic precipitators (ESP), heavy-duty pulse-jet baghouses, kiln foundation stabilization, and quarry blast design.',
+    solutions: [
+      'Certified stack isokinetic emissions testing for kilns, raw mills, and cement mills',
+      'Continuous ambient particulate (PM2.5 / PM10) monitoring around perimeter fencelines',
+      'Quarry blast vibration and acoustic noise monitoring',
+      'Kiln energy audits and alternative fuel evaluation'
+    ],
+    relevantServices: ['air-quality-consultancy-engineering', 'ambient-air-quality-monitoring', 'acoustic-noise-vibration-monitoring', 'industrial-energy-audit-inspection'],
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg'
+  },
+  {
+    id: 'ind-7',
+    slug: 'road-building-construction',
+    name: 'Road & Building Construction',
+    challenges: 'Excavation ground stability, construction dust and heavy machinery noise in urban corridors, storm run-off siltation, and structural safety.',
+    complianceReqs: 'NEMA project EIA licenses, National Construction Authority (NCA) compliance, DOSHS construction safety standards.',
+    engineeringReqs: 'Geotechnical soil investigation, concrete quality assurance testing, structural supervision, and erosion control civil works.',
+    solutions: [
+      'Rotary core drilling and Standard Penetration Testing (SPT) for foundations',
+      'Construction environmental management plan (CEMP) execution and monitoring',
+      'Day & night acoustic noise and vibration monitoring during piling works',
+      'Concrete cube compression and construction materials laboratory testing'
+    ],
+    relevantServices: ['geotechnical-investigation', 'building-construction', 'acoustic-noise-vibration-monitoring', 'environmental-consultancy'],
+    image: '/src/assets/images/service_building_construction_1793480531032.jpg'
+  },
+  {
+    id: 'ind-8',
+    slug: 'energy-infrastructure',
+    name: 'Energy & Infrastructure',
+    challenges: 'Linear infrastructure biodiversity impacts, transmission line EMF, thermal power plant emissions, and geothermal steam monitoring.',
+    complianceReqs: 'International Lender Environmental & Social Impact Standards (World Bank, AfDB, EIB), NEMA Licenses, energy statutory audits.',
+    engineeringReqs: 'Substation geotechnical soil studies, GIS corridor routing, cooling tower water chemistry, and air dispersion modelling.',
+    solutions: [
+      'Full Environmental and Social Impact Assessment (ESIA) for energy developments',
+      'GIS routing and spatial sensitivity analysis for transmission and pipelines',
+      'Thermal power station stack emissions monitoring and AERMOD modeling',
+      'Geotechnical investigation for wind turbine foundations and transmission towers'
+    ],
+    relevantServices: ['environmental-consultancy', 'gis-data-management', 'air-dispersion-modelling', 'geotechnical-investigation'],
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg'
+  }
+];
+
+export const initialProjects: Project[] = [
+  {
+    id: 'proj-1',
+    slug: 'bamburi-cement-kiln-emissions',
+    title: 'Rotary Kiln Stack Emission Monitoring & Abatement Verification',
+    category: 'Stack Emissions Testing',
+    location: 'Mombasa, Kenya',
+    client: 'Bamburi Cement PLC',
+    year: '2025',
+    description: 'Comprehensive isokinetic stack emissions monitoring and compliance auditing on continuous clinker production lines, verifying compliance with Kenyan NEMA air quality regulations and international IFC benchmarks.',
+    scopeOfWork: [
+      'Isokinetic particulate sampling (USEPA Method 5) at 45m elevated stack platform',
+      'Flue gas composition analysis (SO2, NOx, CO, CO2, O2) with multi-gas analyzers',
+      'Gas velocity, volumetric flow rate, and moisture content determination',
+      'Electrostatic Precipitator (ESP) collection efficiency evaluation and recommendations'
+    ],
+    outcomes: 'All measured emission levels were accurately quantified and verified within NEMA statutory limits. Technical recommendations achieved an 18% improvement in particulate capture efficiency.',
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg',
+    featured: true
+  },
+  {
+    id: 'proj-2',
+    slug: 'kengen-geothermal-eia',
+    title: 'Geothermal Infrastructure Environmental Impact Assessment & GIS Analysis',
+    category: 'Environmental Impact Assessments',
+    location: 'Olkaria, Naivasha, Kenya',
+    client: 'Kenya Electricity Generating Company (KenGen)',
+    year: '2024',
+    description: 'Comprehensive Environmental and Social Impact Assessment (ESIA) and geospatial ecological sensitivity mapping for well-pad drilling and steam gathering pipelines.',
+    scopeOfWork: [
+      'Comprehensive baseline ecological, hydrological, and socio-economic field surveys',
+      'GIS multi-criteria corridor routing to avoid fragile wildlife migration paths',
+      'Acoustic baseline noise monitoring in national park boundary zones',
+      'Public participation and stakeholder consultation forums'
+    ],
+    outcomes: 'Secured full NEMA EIA License approval with zero stakeholder grievances; implemented biodiversity monitoring plan successfully adopted by site management.',
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg',
+    featured: true
+  },
+  {
+    id: 'proj-3',
+    slug: 'tononoka-steels-noise-vibration',
+    title: 'Heavy Rolling Mill Acoustic Noise & Ground Vibration Audit',
+    category: 'Noise and Vibration Monitoring',
+    location: 'Embakasi Industrial Area, Nairobi',
+    client: 'Tononoka Steels Ltd',
+    year: '2024',
+    description: 'Detailed occupational noise dosimetry, community boundary noise mapping, and structural ground vibration analysis during high-capacity rolling mill operations.',
+    scopeOfWork: [
+      'Class 1 sound level monitoring across 16 interior and perimeter monitoring stations',
+      'Personal noise dosimetry for 45 factory floor operators',
+      'Triaxial seismograph ground vibration analysis during cold rolling cycle',
+      'Design of acoustic barrier enclosures and anti-vibration rubber damper pads'
+    ],
+    outcomes: 'Demonstrated complete DOSHS legal compliance and delivered engineered vibration isolation designs that reduced boundary noise levels by 11 dBA.',
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg',
+    featured: true
+  },
+  {
+    id: 'proj-4',
+    slug: 'gateway-commercial-geotechnical',
+    title: 'High-Rise Commercial Complex Geotechnical Subsurface Investigation',
+    category: 'Geotechnical Investigations',
+    location: 'Mombasa Road Corridor, Nairobi',
+    client: 'Commercial Property Developers',
+    year: '2025',
+    description: 'Comprehensive geotechnical ground investigation involving deep rotary core drilling, standard penetration testing (SPT), and rock quality designation (RQD) for a 16-story commercial development.',
+    scopeOfWork: [
+      'Drilling of four boreholes to depths of 25m into underlying phonolite bedrock',
+      'Continuous SPT testing at 1.5m intervals and undisturbed core sampling',
+      'Laboratory direct shear, triaxial, and consolidation testing of cohesive subsoils',
+      'Allowable bearing capacity calculation and piled raft foundation recommendations'
+    ],
+    outcomes: 'Identified critical shallow groundwater table and localized weathered rock layer; provided foundation engineering design that saved approximately 14% on substructure excavation costs.',
+    image: '/src/assets/images/service_geotechnical_drilling_1793480530862.jpg',
+    featured: true
+  },
+  {
+    id: 'proj-5',
+    slug: 'isuzu-ea-industrial-hygiene',
+    title: 'Vehicle Assembly Plant Comprehensive Industrial Hygiene & IAQ Survey',
+    category: 'Air Quality Monitoring',
+    location: 'Nairobi, Kenya',
+    client: 'Isuzu East Africa',
+    year: '2024',
+    description: 'Workplace occupational hygiene assessment, paint shop volatile organic compound (VOC) monitoring, welding fume analysis, and indoor air quality profiling across assembly halls.',
+    scopeOfWork: [
+      'Personal air sampling for metal fumes (lead, chromium, manganese) and respirable dust',
+      'Photoionization detection of solvent vapors (toluene, xylene) in automotive spray booths',
+      'Ventilation air changes per hour (ACH) verification and HVAC filter efficiency audits',
+      'Ergonomic workstation evaluation for line operators'
+    ],
+    outcomes: 'Delivered an actionable DOSHS-compliant workplace hygiene management protocol with optimized local exhaust ventilation (LEV) flow rates.',
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg',
+    featured: false
+  },
+  {
+    id: 'proj-6',
+    slug: 'farmers-choice-effluent-lab',
+    title: 'Food Processing Wastewater Quality Testing & Environmental Audit',
+    category: 'Environmental Audits',
+    location: 'Kahawa West, Nairobi',
+    client: "Farmer's Choice Ltd",
+    year: '2025',
+    description: 'Routine chemical, microbiological, and toxicological analysis of biological treatment plant wastewater effluent to ensure compliance with NEMA discharge limits.',
+    scopeOfWork: [
+      'Weekly composite sampling of treated effluent and receiving water bodies',
+      'Laboratory testing for BOD5, COD, TSS, nitrates, phosphates, oil & grease, and pathogen counts',
+      'Annual statutory environmental audit and waste management review',
+      'Sludge toxicity characteristic leaching procedure (TCLP) profiling'
+    ],
+    outcomes: 'Consistently validated full compliance with EMCA Water Quality Regulations, ensuring uninterrupted municipal discharge permits.',
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg',
+    featured: false
+  }
+];
+
+export const initialTeam: TeamMember[] = [
+  {
+    id: 'tm-1',
+    name: 'Eng. Senior Lead Consultant',
+    role: 'Managing Director & Lead Environmental Expert',
+    qualification: 'MSc Environmental Engineering (UoN), BSc Civil Engineering',
+    certifications: 'NEMA Registered Lead Expert (Reg No. 2145), EBK Registered Consulting Engineer',
+    bio: 'Over 16 years of leadership experience in environmental impact assessments, infrastructure development, regulatory compliance, and multidisciplinary engineering across Kenya, Uganda, and Tanzania.',
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg',
+    category: 'management'
+  },
+  {
+    id: 'tm-2',
+    name: 'Dr. Principal Air Quality Specialist',
+    role: 'Head of Air Quality & Emissions Engineering',
+    qualification: 'PhD Atmospheric Physics, MSc Chemical Engineering',
+    certifications: 'Certified Stack Testing Specialist (USEPA / ISO), Qualified Air Dispersion Modeler',
+    bio: 'Renowned expert in isokinetic stack sampling, AERMOD dispersion simulations, and industrial air pollution abatement systems with extensive publications on East African air shed quality.',
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg',
+    category: 'management'
+  },
+  {
+    id: 'tm-3',
+    name: 'Senior Geotechnical Engineer',
+    role: 'Lead Geotechnical & Structural Consultant',
+    qualification: 'MSc Geotechnical Engineering, BSc Civil Engineering',
+    certifications: 'Registered Engineer (EBK), Corporate Member IEK',
+    bio: 'Specialist in deep rotary core drilling, ground improvement, foundation settlement modeling, and forensic structural integrity assessments for infrastructure and tall buildings.',
+    image: '/src/assets/images/service_geotechnical_drilling_1793480530862.jpg',
+    category: 'technical'
+  },
+  {
+    id: 'tm-4',
+    name: 'Chief Environmental Chemist',
+    role: 'Laboratory Director & Quality Assurance Manager',
+    qualification: 'MSc Analytical Chemistry, BSc Industrial Chemistry',
+    certifications: 'ISO/IEC 17025 Lead Assessor, Member Chemical Society of Kenya',
+    bio: 'Directs analytical environmental testing operations covering heavy metals, hazardous waste characterization, water quality parameters, and industrial effluent kinetics.',
+    image: '/src/assets/images/service_environmental_lab_1793480530132.jpg',
+    category: 'technical'
+  },
+  {
+    id: 'tm-5',
+    name: 'Principal GIS & Remote Sensing Expert',
+    role: 'Senior GIS Analyst & Spatial Data Lead',
+    qualification: 'MSc Geoinformatics, BSc Surveying & Photogrammetry',
+    certifications: 'Certified GIS Professional (GISP), Licensed Drone Remote Pilot',
+    bio: 'Leads geospatial intelligence, drone topographic photogrammetry, remote sensing land use classification, and environmental sensitivity mapping for cross-country infrastructure.',
+    image: '/src/assets/images/service_building_construction_1793480531032.jpg',
+    category: 'technical'
+  }
+];
+
+export const initialTestimonials: Testimonial[] = [
+  {
+    id: 't-1',
+    clientName: 'Operations Director',
+    organization: 'Bamburi Cement PLC',
+    role: 'Head of Health, Safety & Environment',
+    rating: 5,
+    content: 'Senior Environmental & Engineering Ltd has been an indispensable partner for our continuous stack emission monitoring and compliance audits. Their technical precision, calibrated instrumentation, and deep knowledge of NEMA standards are unmatched.',
+    approved: true,
+    date: '2025-08-14'
+  },
+  {
+    id: 't-2',
+    clientName: 'Chief Project Engineer',
+    organization: 'KenGen Kenya',
+    role: 'Renewable Infrastructure Unit',
+    rating: 5,
+    content: 'SEEL delivered our comprehensive Geothermal ESIA and ecological sensitivity GIS mapping ahead of schedule. Their professionalism during community stakeholder consultations ensured smooth regulatory approvals from NEMA.',
+    approved: true,
+    date: '2025-05-22'
+  },
+  {
+    id: 't-3',
+    clientName: 'General Factory Manager',
+    organization: 'Tononoka Steels Ltd',
+    role: 'Manufacturing & Operations',
+    rating: 5,
+    content: 'Their acoustic noise and vibration monitoring report was thorough, scientifically rigorous, and accepted without reservation by DOSHS. We highly recommend SEEL to any heavy manufacturing facility in Kenya.',
+    approved: true,
+    date: '2024-11-10'
+  },
+  {
+    id: 't-4',
+    clientName: 'Quality Assurance Head',
+    organization: "Farmer's Choice Ltd",
+    role: 'Food Safety & Compliance',
+    rating: 5,
+    content: 'Prompt laboratory turnaround, immaculate chain-of-custody documentation, and clear technical insights. SEEL is our go-to partner for industrial effluent testing and statutory audits.',
+    approved: true,
+    date: '2025-09-02'
+  }
+];
+
+export const initialArticles: Article[] = [
+  {
+    id: 'art-1',
+    slug: 'navigating-nema-air-quality-regulations-kenya',
+    title: 'Navigating NEMA Air Quality Regulations: A Guide for Industrial Plant Managers',
+    category: 'Regulatory Updates',
+    readTime: '6 min read',
+    publishedAt: '2025-10-15',
+    summary: 'An executive breakdown of the Environmental Management and Co-ordination (Air Quality) Regulations, stack sampling thresholds, and best practices for emission compliance.',
+    content: 'Industrial facility managers in Kenya face stringent compliance requirements under the EMCA (Air Quality) Regulations 2014. From mandatory quarterly stack testing on boilers and kilns to fenceline ambient PM2.5/PM10 monitoring, this article outlines the core methodologies (USEPA Methods 1-5), isokinetic sampling principles, and how to prepare audit-ready records for NEMA inspections.',
+    author: 'Dr. Principal Air Quality Specialist',
+    image: '/src/assets/images/service_air_quality_stack_1793480529106.jpg',
+    tags: ['NEMA', 'Air Quality', 'Stack Emissions', 'Compliance']
+  },
+  {
+    id: 'art-2',
+    slug: 'geotechnical-site-investigation-tall-buildings',
+    title: 'The Critical Role of Geotechnical Soil Investigation in Urban Infrastructure',
+    category: 'Technical Publications',
+    readTime: '8 min read',
+    publishedAt: '2025-09-28',
+    summary: 'Why Standard Penetration Testing (SPT), rotary core drilling, and settlement calculations are vital before laying commercial foundation slabs.',
+    content: 'With Nairobi and East African cities experiencing unprecedented vertical construction, accurate subsurface geotechnical investigation is not merely a formality—it is a critical structural safeguard. We examine how variable volcanic phonolite formations, localized clay pockets, and groundwater fluctuations impact bearing capacity and pile foundation engineering.',
+    author: 'Senior Geotechnical Engineer',
+    image: '/src/assets/images/service_geotechnical_drilling_1793480530862.jpg',
+    tags: ['Geotechnical', 'Civil Engineering', 'Foundations', 'Safety']
+  },
+  {
+    id: 'art-3',
+    slug: 'workplace-noise-dosimetry-doshs-compliance',
+    title: 'Occupational Noise Exposure & DOSHS Standards in Manufacturing Facilities',
+    category: 'Industrial Hygiene',
+    readTime: '5 min read',
+    publishedAt: '2025-08-19',
+    summary: 'Practical strategies to mitigate hearing hazards, perform personal noise dosimetry, and comply with the Occupational Safety and Health Act (OSHA 2007).',
+    content: 'Prolonged exposure to sound levels exceeding 85 dBA across an 8-hour Time-Weighted Average (TWA) poses acute sensory risks and legal liability. This guide walks through Class 1 acoustic field measurements, octave band analysis for targeted machine dampening, and establishing an effective Hearing Conservation Program in compliance with DOSHS.',
+    author: 'Eng. Senior Lead Consultant',
+    image: '/src/assets/images/hero_environmental_engineering_1793480528430.jpg',
+    tags: ['Industrial Hygiene', 'Noise Monitoring', 'DOSHS', 'OSHA']
+  }
+];
+
+export const clientPartnersList = [
+  { name: 'Bamburi Cement', industry: 'Cement Manufacturing' },
+  { name: 'KenGen Kenya', industry: 'Renewable Power' },
+  { name: 'TotalEnergies', industry: 'Oil & Gas' },
+  { name: 'Isuzu East Africa', industry: 'Automotive Manufacturing' },
+  { name: "Farmer's Choice", industry: 'Food Processing' },
+  { name: 'Tononoka Steels', industry: 'Steel Smelting' },
+  { name: 'Mombasa Cement', industry: 'Heavy Industry' },
+  { name: 'Dosh Steel', industry: 'Steel Fabrication' },
+  { name: 'Kenya Breweries Limited', industry: 'Beverage Manufacturing' },
+  { name: 'Naivas', industry: 'Retail Logistics' },
+  { name: 'Reynolds Construction', industry: 'Civil Infrastructure' },
+  { name: 'Villa Rosa Kempinski', industry: 'Luxury Hospitality' },
+  { name: 'Sankara Nairobi', industry: 'Hospitality' },
+  { name: 'Mumias Sugar', industry: 'Agro-processing' },
+  { name: 'Nairobi Metropolitan Services', industry: 'Public Sector' }
+];
